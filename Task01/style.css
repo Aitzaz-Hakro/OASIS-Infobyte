@@ -1,0 +1,11 @@
+body{
+    scroll-behavior: smooth;
+
+  
+}
+.profilephoto{
+    filter: grayscale(100%); /* it will make the image black and white */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    background: linear-gradient(45deg, #ddd 25%, transparent 25%) 0 0 / 10px 10px;
+}
