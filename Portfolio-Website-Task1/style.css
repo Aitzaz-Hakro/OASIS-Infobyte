@@ -132,3 +132,19 @@ body{
 .card{
   margin: 15px !important;
 }
+.Projects{
+  margin-bottom: 200px !important;
+}
+media screen and (max-width: 600px){
+  .desc{
+    font-size: 1rem;
+  }
+  .animate1,
+  .animate2,
+  .animate3,
+  .animate4,
+  .animate5, .img {
+    opacity: 0;
+    
+  }
+}
