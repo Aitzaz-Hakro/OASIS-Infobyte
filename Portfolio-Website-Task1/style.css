@@ -136,58 +136,8 @@ body{
   margin-bottom: 200px !important;
 }
 
-@media only screen and (max-width: 375px){
-  .desc{
-    font-size: 1rem;
-  }
-  .animate1,
-  .animate2,
-  .animate3,
-  .animate4,
-  .animate5, .img {
-    width: 100lvh;
-    opacity: 0;
-    
-  }
- 
-.hoverimage {
-  width: 10px !important;
-  top: 0%;
-  position: absolute;
-  background-color: transparent;
-  cursor: pointer;
-  z-index: 3;
-}
 
-.profilephoto{
-  width: 100px;
-  border-radius: 10%;
-  filter: grayscale(100%); /*it will make the image black and white*/
 
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-  /* background-color: red; */
-  background: linear-gradient(45deg, #ddd 25%, transparent 25%) 0 0 / 10px 10px;
-}
-
-}
-
-@media only screen and (max-width: 600px){
-  .desc{
-    font-size: 1rem;
-  }
-  .animate1,
-  .animate2,
-  .animate3,
-  .animate4,
-  .animate5, .img {
-    /* width: 100vh; */
-    width: 100lvh;
-
-    opacity: 0;
-    
-  }
-  
-}
 
 @media only screen and (min-width: 2000px){
   .desc{
@@ -214,4 +164,8 @@ body{
     /* background-color: red; */
     background: linear-gradient(45deg, #ddd 25%, transparent 25%) 0 0 / 10px 10px;
   }
+}
+.icons{
+  display: flex;
+  justify-content: space-around
 }
