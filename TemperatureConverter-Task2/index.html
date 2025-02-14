@@ -5,18 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temperature Converter</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+      
+    </style>
 </head>
 <body>
-   
-    <div class="container" style="margin-top: 100px;">
-        <div>
-            <p class="temp">Temperature Converter</p>
-       </div>
-        
-        
-     
-
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <div class="converter">
+            <input type="number" id="inputValue" placeholder="Enter temperature...">
+            <div class="unit-selectors">
+                <select id="fromUnit">
+                    <option value="celsius">Celsius (°C)</option>
+                    <option value="fahrenheit">Fahrenheit (°F)</option>
+                    <option value="kelvin">Kelvin (K)</option>
+                </select>
+                <select id="toUnit">
+                    <option value="fahrenheit">Fahrenheit (°F)</option>
+                    <option value="celsius">Celsius (°C)</option>
+                    <option value="kelvin">Kelvin (K)</option>
+                </select>
+            </div>
+            <button onclick="convertTemperature()">Convert</button>
+            <div class="result" id="result"></div>
+        </div>
     </div>
+
+    <script>
+        function convertTemperature() {
     
+            const inputValue = parseFloat(document.getElementById('inputValue').value);
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+            const resultElement = document.getElementById('result');
+         if (isNaN(inputValue)) {
+                resultElement.textContent = "Please enter a valid number!";
+                return;
+            }
+            
+            let result;
+            let formulaText = "";
+
+                 
+            if (fromUnit === 'celsius') {
+                if (toUnit === 'fahrenheit') {
+                    result = (inputValue * 9/5) + 32;
+                    formulaText = `${inputValue}°C × 9/5 + 32 = ${result.toFixed(2)}°F`;
+                } else if (toUnit === 'kelvin') {
+                    result = inputValue + 273.15;
+                    formulaText = `${inputValue}°C + 273.15 = ${result.toFixed(2)}K`;
+                } else {
+                    result = inputValue;
+                }
+            }
+           
+            else if (fromUnit === 'fahrenheit') {
+                if (toUnit === 'celsius') {
+                    result = (inputValue - 32) * 5/9;
+                    formulaText = `(${inputValue}°F - 32) × 5/9 = ${result.toFixed(2)}°C`;
+                } else if (toUnit === 'kelvin') {
+                    result = (inputValue - 32) * 5/9 + 273.15;
+                    formulaText = `(${inputValue}°F - 32) × 5/9 + 273.15 = ${result.toFixed(2)}K`;
+                } else {
+                    result = inputValue;
+                }
+            }
+          
+            else if (fromUnit === 'kelvin') {
+                if (toUnit === 'celsius') {
+                    result = inputValue - 273.15;
+                    formulaText = `${inputValue}K - 273.15 = ${result.toFixed(2)}°C`;
+                } else if (toUnit === 'fahrenheit') {
+                    result = (inputValue - 273.15) * 9/5 + 32;
+                    formulaText = `(${inputValue}K - 273.15) × 9/5 + 32 = ${result.toFixed(2)}°F`;
+                } else {
+                    result = inputValue;
+                }
+            }
+
+          
+            resultElement.innerHTML = `
+                <div>${inputValue} ${getUnitSymbol(fromUnit)} =</div>
+                <div style="font-size: 1.5rem; color: #f57c00; margin: 0.5rem 0">
+                    ${result.toFixed(2)} ${getUnitSymbol(toUnit)}
+                </div>
+                <div style="font-size: 0.9rem; color: #666">${formulaText}</div>
+            `;
+        }
+
+        function getUnitSymbol(unit) {
+            return {
+                celsius: '°C',
+                fahrenheit: '°F',
+                kelvin: 'K'
+            }[unit];
+        }
+    </script>
 </body>
 </html>
